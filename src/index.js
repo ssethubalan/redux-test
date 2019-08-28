@@ -8,6 +8,8 @@ import App from "./js/components/App.js";
 // import store from "./js/store/index";
 // import App from "./js/components/App.jsx";
 
+window.store = store;
+
 render(
   <Provider store={store}>
     <App />

@@ -5,6 +5,9 @@ import uuidv1 from "uuid";
 
 import { addArticle } from "../actions/index";
 
+const mapStateToProps = state => {
+    return { articles: state.articles };
+};
 function mapDispatchToProps(dispatch) {
     return {
         addArticle: article => dispatch(addArticle(article))
@@ -45,13 +48,14 @@ class ConnectedForm extends Component {
                     />
                 </div>
                 <button type="submit" className="btn btn-success btn-lg">
-                    SAVE
+                    SAVED
                 </button>
+                <span className="px-2"> {this.props.articles.length} ITEMS </span>
             </form>
         );
     }
 }
 
-const Form = connect(null, mapDispatchToProps)(ConnectedForm);
+const Form = connect(mapStateToProps, mapDispatchToProps)(ConnectedForm);
 
 export default Form;
